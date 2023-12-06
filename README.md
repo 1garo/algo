@@ -1,6 +1,6 @@
 # Algo
 
-Implementation of algorithms in Go
+Implementing algorithms in Go
 
 ### Usage
 ```
