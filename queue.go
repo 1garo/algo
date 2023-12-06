@@ -40,11 +40,11 @@ func (qn *Queue[T]) enqueue(item T) {
 }
 
 func (qn *Queue[T]) deque() (*T, error) {
-	qn.Length--;
 	if qn.tail == nil {
 		return nil, fmt.Errorf("cannot deque from an empty queue")
 	}
 
+	qn.Length--;
 	head := qn.head
 	qn.head = qn.head.next
 

@@ -9,6 +9,11 @@ func TestQueue(t *testing.T) {
 	queue := &Queue[int]{}
 	queue.New()
 
+	_, err := queue.deque()
+	if err == nil {
+		t.Fatalf("expected: %s, received %v", err.Error(), nil)
+	}
+
 	queue.enqueue(1)
 	queue.enqueue(2)
 	queue.enqueue(3)
@@ -22,8 +27,12 @@ func TestQueue(t *testing.T) {
 		t.Fatalf("expected %d, received %d", 1, *val)
 	}
 
-	queue.deque()
+	val, _ = queue.deque()
 	if queue.Length != 2 {
 		t.Fatalf("expected %d, received %d", 2, queue.Length)
+	}
+
+	if *val != 1 {
+		t.Fatalf("expected %d, received %d", 1, *val)
 	}
 }
