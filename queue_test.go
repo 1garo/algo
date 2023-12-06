@@ -7,11 +7,11 @@ import (
 
 func TestQueue(t *testing.T) {
 	queue := &Queue[int]{}
-	queue.New()
+	//queue.New()
 
-	_, err := queue.deque()
-	if err == nil {
-		t.Fatalf("expected: %s, received %v", err.Error(), nil)
+	val := queue.deque()
+	if val != nil {
+		t.Fatalf("expected: %v, received %d", nil, *val)
 	}
 
 	queue.enqueue(1)
@@ -21,13 +21,13 @@ func TestQueue(t *testing.T) {
 		t.Fatalf("expected %d, received %d", 3, queue.Length)
 	}
 
-	val := queue.peek()
+	val = queue.peek()
 
 	if *val != 1 {
 		t.Fatalf("expected %d, received %d", 1, *val)
 	}
 
-	val, _ = queue.deque()
+	val = queue.deque()
 	if queue.Length != 2 {
 		t.Fatalf("expected %d, received %d", 2, queue.Length)
 	}
